@@ -59,6 +59,8 @@ class ReaderBase(ABC):
         # 通达信特有的板块指数88****开头的日线数据放在 sh 文件夹下
         elif symbol.startswith('88'):
             market = 'sh'
+        elif symbol.startswith('sh'):  #上证9打头的自己加sh前缀区分，get_stock_market中将9开头分配给北交所
+            market = 'sh'
         else:
             # 判断是sh还是sz
             market = get_stock_market(symbol, True)
